@@ -4,7 +4,7 @@ pipeline {
         PROJECT_ID = 'my-lab-305909'
         CLUSTER_NAME = 'cluster-2'
         LOCATION = 'europe-west4-c'
-        CREDENTIALS_ID = 'gke'
+        CREDENTIALS_ID = 'my-lab-305909'
     }
     stages {
         stage("Checkout code") {
@@ -32,7 +32,7 @@ pipeline {
         stage('Deploy to GKE') {
             steps{
                 sh "sed -i 's/hello:latest/hello:${env.BUILD_ID}/g' deployment.yaml"
-                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: "test", verifyDeployments: true])
+                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
             }
         }
     }    
