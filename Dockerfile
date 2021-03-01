@@ -14,8 +14,8 @@ FROM bitnami/node:9-prod
 ENV NODE_ENV="production"
 COPY --from=builder /app /app
 WORKDIR /app
-ENV PORT 5000
-EXPOSE 5000
+ENV PORT 5001
+EXPOSE 5001
 
-# Start the application finally
+# Start the application finally3
 CMD ["npm", "start"]
