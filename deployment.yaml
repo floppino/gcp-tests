@@ -18,7 +18,7 @@ template:
       image: iumi/hello:latest
       imagePullPolicy: Always
       ports:
-      - containerPort: 5001
+      - containerPort: 5000
         name: hello
 
 ---
@@ -30,8 +30,8 @@ labels:
   app: hello
 spec:
 ports:
-  - port: 5001
-    targetPort: 5001
+  - port: 5000
+    targetPort: 5000
 selector:
   app: hello
   tier: hello
